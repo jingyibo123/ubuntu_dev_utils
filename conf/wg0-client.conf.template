@@ -1,0 +1,14 @@
+[Interface]
+# 本机的虚拟 IP
+Address = {{WG_SUBNET}.2/24
+PrivateKey = {{CLIENT_PRIVATE_KEY}}
+
+[Peer]
+# 填入服务端公钥
+PublicKey = {{SERVER_PUBLIC_KEY}}
+# 重点：替换为服务端公网 IP 和你设定的端口
+Endpoint = {{WG_SERVER_IP}}:{{WG_PORT}}
+# 接收来自整个虚拟网段的流量（这样 B 才能连过来）
+AllowedIPs = {{WG_SUBNET}.0/24
+# 保持连接 (NAT Traversal)：防止 A1 前端的物理路由器清理 UDP 映射表导致断连
+PersistentKeepalive = 25

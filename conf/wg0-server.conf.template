@@ -1,0 +1,18 @@
+[Interface]
+# 服务端的虚拟 IP (固定为网段的 .1)
+Address = {{WG_SUBNET}}.1/24
+ListenPort = {{WG_SERVER_PORT}}
+PrivateKey = {{WG_SERVER_PRIVATE_KEY}}
+
+# 防火墙拦截规则
+
+
+[Peer]
+# 客户端1
+PublicKey = {{C1_PUBLIC_KEY}}
+AllowedIPs = {{WG_SUBNET}}.2/32
+
+[Peer]
+# 客户端2
+PublicKey = {{C2_PUBLIC_KEY}}
+AllowedIPs = {{WG_SUBNET}}.3/32
